@@ -3,7 +3,6 @@
     include("sidebar/sidebar.php");
     ?>
     <div class="main_content">
-        
         <?php
         if (isset($_GET['quanly'])) {
             $t = $_GET['quanly'];
