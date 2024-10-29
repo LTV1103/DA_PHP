@@ -9,6 +9,10 @@
         include("quanlidanhmuc/add.php");
         include("quanlidanhmuc/loaddata.php");
 
+    }else if ($t == 'quanlisanpham') {
+        include("quanlisanpham/add.php");
+        include("quanlisanpham/loaddata.php");
+
     }else{
         include("dashboard.php");
     }
