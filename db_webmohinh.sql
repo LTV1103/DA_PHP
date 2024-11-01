@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th10 26, 2024 lúc 08:38 PM
--- Phiên bản máy phục vụ: 8.2.0
--- Phiên bản PHP: 8.2.13
+-- Thời gian đã tạo: Th10 01, 2024 lúc 04:29 PM
+-- Phiên bản máy phục vụ: 8.3.0
+-- Phiên bản PHP: 8.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,17 +32,16 @@ CREATE TABLE IF NOT EXISTS `tbl_categories` (
   `id_category` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_category`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tbl_categories`
 --
 
 INSERT INTO `tbl_categories` (`id_category`, `name`) VALUES
-(3, 'Fairy Tail'),
-(4, 'One Piece'),
-(5, 'Dragon Ball'),
-(18, 'Pokemon');
+(28, 'Fairy Tail'),
+(29, 'Pokemon'),
+(37, 'One Piece');
 
 -- --------------------------------------------------------
 
@@ -115,13 +114,24 @@ CREATE TABLE IF NOT EXISTS `tbl_payments` (
 DROP TABLE IF EXISTS `tbl_products`;
 CREATE TABLE IF NOT EXISTS `tbl_products` (
   `id_product` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
+  `namepro` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `stock` int NOT NULL,
   `id_category` int NOT NULL,
-  PRIMARY KEY (`id_product`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `image` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_product`),
+  KEY `id_category` (`id_category`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_products`
+--
+
+INSERT INTO `tbl_products` (`id_product`, `namepro`, `description`, `price`, `stock`, `id_category`, `image`) VALUES
+(24, 'Luffy1', 'vippro', 12000000.00, 4, 37, 'Luffy.jpeg'),
+(25, 'Luffy2', 'vippromax', 99999999.99, 10, 37, 'luffy2.jpeg'),
+(26, 'Luffy3', 'vippromaxmax', 1231241.00, 30, 37, 'logo.jpg');
 
 -- --------------------------------------------------------
 
@@ -138,6 +148,16 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `role` enum('user','admin') NOT NULL,
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `tbl_products`
+--
+ALTER TABLE `tbl_products`
+  ADD CONSTRAINT `tbl_products_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `tbl_categories` (`id_category`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

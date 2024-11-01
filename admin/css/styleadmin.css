@@ -50,8 +50,45 @@
 }
 
 /* CSS cho form_addCate */
+/* Quản lí sản phẩm */
+.form_addCate_item
+{
+    width: 50%;
+    height: 300px;
+    justify-content:left;    
+    
+}
+.form_addCate_item table
+{
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.form_addCate_item input[type="text"] {
+    width: 100%; /* Chiếm toàn bộ chiều rộng ô */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.form_addCate_item button {
+    padding: 8px 16px;
+    background-color: #4CAF50; /* Màu nền nút */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.form_addCate_item button:hover {
+    background-color: #45a049; /* Màu nền nút khi hover */
+}
+
+/* Quản lí danh mục */
 .form_addCate {
-    width: 35%; /* Chiều rộng cố định cho form */
+    width: 35%;
+   
+    /* Chiều rộng cố định cho form */
 }
 
 .form_addCate table {

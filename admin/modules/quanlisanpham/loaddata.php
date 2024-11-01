@@ -1,25 +1,72 @@
-<?php
-$sql_loatDanhmuc = "SELECT * FROM tbl_categories";
-$query_lietke_danhmuc = mysqli_query($mysqli, $sql_loatDanhmuc);
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Danh Sách Sản Phẩm</title>
+</head>
+<body>
+<?php 
+    $mysqli = new mysqli("localhost", "root", "", "db_webmohinh");
+    if ($mysqli->connect_error) {
+        die("Kết nối thất bại: " . $mysqli->connect_error);
+    }
 
-<div class="list_category">
+    $sqlsp = "SELECT tbl_products.*, tbl_categories.name AS category_name 
+              FROM tbl_products 
+              INNER JOIN tbl_categories ON tbl_products.id_category = tbl_categories.id_category";
     
-    <table border="1 solid #f0f0f0" style="border-style: dashed;">
+    $query = mysqli_query($mysqli, $sqlsp);
 
-        <th>Danh mục</th>
-        <?php
-            $i = 0;
-
-
-            while($row = mysqli_fetch_array($query_lietke_danhmuc)){
-                $i++;
-        ?>
-        <tr>
-            <td><?php echo $row['name'] ;?></td>
-        </tr>
-
-        <?php  }?>
-    </table>
-
+    if (!$query) {
+        echo "Lỗi truy vấn: " . mysqli_error($mysqli);
+        exit;
+    }
+?>
+<div class="form_addCate_item">
+    <div class="card">
+        <div class="card-header"><h2>DANH SÁCH SẢN PHẨM</h2></div>
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Image</th>
+                        <th>Category</th>
+                        <th>Upload</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <?php   
+                    $i = 1; 
+                    while ($row = mysqli_fetch_assoc($query)) { ?>
+                        <tr>
+                            <td><?php echo $i++; ?></td>
+                            <td><?php echo $row['namepro']; ?></td>
+                            <td><?php echo $row['description']; ?></td>
+                            <td><?php echo number_format($row['price'],0    ); ?> VND</td> 
+                            <td><?php echo $row['stock']; ?></td>
+                            <td>
+                                <img src="/image/<?php echo htmlspecialchars($row['image']); ?>" width="100px" >
+                            </td>
+                            <td><?php echo htmlspecialchars($row['category_name']); ?></td> 
+                            <td><a class="btn btn-secondary" href="/admin/modules/quanlisanpham/edit.php?id=<?php echo $row['id_product']; ?>">Sửa</a></td>
+                            <td><a class="btn btn-danger" href="/admin/modules/quanlisanpham/remove.php?id=<?php echo $row['id_product']; ?>">Xóa</a></td>  
+                        </tr>
+                    <?php } ?>
+                </tbody>     
+            </table>
+            <a class="btn btn-success" href="/admin/modules/quanlisanpham/add.php">Thêm</a>
+        </div>
+    </div>
 </div>
+    
+</body>
+</html>
