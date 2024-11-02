@@ -9,7 +9,7 @@
 ?> 
 
 <h3>SẢN PHẨM</h3>
-
+<!-- Hiện Tất cả Sản Phẩm -->
 <?php if ($id == 1) { ?>
     <ul class="product_list">
         <?php while ($row = mysqli_fetch_array($query)) { ?> 
@@ -22,6 +22,7 @@
             </li>
         <?php } ?>
     </ul>
+<!-- Hiện Sản Phẩm Theo Danh Mục -->
 <?php } else { ?>
     <ul class="product_list">
         <?php while ($row_product = mysqli_fetch_array($query_product)) { ?> 
