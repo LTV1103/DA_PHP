@@ -1,21 +1,37 @@
-<!-- <?php
-    $sql_product = "SELECT *FROM tbl_categories , tbl_ product WHERE tbl_product.id_category = tbl_categories.id_category AND tbl_categories.id_category = '$_GET[id]' ";
-    // [phan san pham dang trong nen ko hien dc kq]
-    $query_product =  mysqli_query($mysqli,$sql_product);
-    $row_title = mysqli_fetch_array( $query_product);
-?> -->
-<h3>SAN PHAM</h3>
-        <ul class="product_list">
-        <!-- <?php while ($row_product = mysqli_fetch_array($query_product)) { ?> -->
-            <li><a href="#"><img src="./image/Luffy.jpeg" alt="#">
-                    <p class="title_product">Tên sản phẩm: Luffy mũ rơm</p>
-                    <p class="price_product">Giá: 2000000 VND</p>
+<?php
+    $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+    $sql_product = "SELECT * FROM tbl_products, tbl_categories WHERE tbl_products.id_category = tbl_categories.id_category AND tbl_products.id_category = $id ";
+    $query_product = mysqli_query($mysqli, $sql_product);
+
+    $sql = "SELECT * FROM tbl_products";
+    $query = mysqli_query($mysqli, $sql);
+?> 
+
+<h3>SẢN PHẨM</h3>
+
+<?php if ($id == 1) { ?>
+    <ul class="product_list">
+        <?php while ($row = mysqli_fetch_array($query)) { ?> 
+            <li>
+                <a href="#">
+                    <img src="/image/<?php echo htmlspecialchars($row['image']); ?>" width="200px" alt="Product Image">
+                    <p class="title_product">Tên sản phẩm: <?php echo htmlspecialchars($row['namepro']); ?></p>
+                    <p class="price_product">Giá: <?php echo htmlspecialchars($row['price']); ?> VND</p>
                 </a>
             </li>
-            <li><a href="#"><img src="./image/luffy2.jpeg   " alt="#">
-                    <p class="title_product">Tên sản phẩm: Luffy mũ rơm</p>
-                    <p class="price_product">Giá: 2000000 VND</p>
+        <?php } ?>
+    </ul>
+<?php } else { ?>
+    <ul class="product_list">
+        <?php while ($row_product = mysqli_fetch_array($query_product)) { ?> 
+            <li>
+                <a href="#">
+                    <img src="/image/<?php echo htmlspecialchars($row_product['image']); ?>" width="200px" alt="Product Image">
+                    <p class="title_product">Tên sản phẩm: <?php echo htmlspecialchars($row_product['namepro']); ?></p>
+                    <p class="price_product">Giá: <?php echo htmlspecialchars($row_product['price']); ?> VND</p>
                 </a>
             </li>
-            <!-- <?php  } ?> -->
-        </ul>
+        <?php } ?>
+    </ul>
+<?php } ?>
