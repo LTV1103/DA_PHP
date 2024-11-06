@@ -15,6 +15,8 @@
             include("main/giohang.php");
         } elseif ($t == 'lienhe') {
             include("main/lienhe.php");
+        } elseif ($t == 'sanpham') {
+            include("main/chitietsp.php");
         } else {
             include("main/index_mainContent.php");
         }

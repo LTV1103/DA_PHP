@@ -137,15 +137,50 @@ body {
   height: auto;
   display: block;
 }
-
-.title_product,
-.price_product {
-  padding: 10px;
+.title_product {
+  color: #000;
+  display: -webkit-box; /* Sử dụng flexbox cho trình duyệt hỗ trợ */
+  -webkit-box-orient: vertical; /* Định hướng thành cột */
+  -webkit-line-clamp: 2; /* Giới hạn số dòng hiển thị là 1 */
+  overflow: hidden; /* Ẩn nội dung bị tràn */
+  text-overflow: ellipsis; /* Thêm dấu "..." ở cuối văn bản bị ẩn */
+  white-space: normal;
   font-size: 14px;
-  color: #333;
+  margin: 5px;
 }
+
 .product_list li a {
-  text-decoration: none; 
+  text-decoration: none;
+}
+.price_product {
+  color: #EE4D2D;
+  margin: 0 10px;
+  font-size: 16px;
+}
+
+/* Buy button styling */
+.buy_button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: white;
+  background-color: #28a745;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-transform: uppercase;
+  margin: 10px;
+}
+
+.buy_button i {
+  margin-right: 5px;
+}
+
+.buy_button:hover {
+  background-color: #218838;
 }
 
 /* -----------------------Contact--------------------------- */
@@ -155,33 +190,32 @@ body {
   margin-bottom: 20px;
 }
 .breadcrumb a {
-  color: #000000; 
+  color: #000000;
 }
-.breadcrumb a:hover{
+.breadcrumb a:hover {
   color: red;
 }
 
 .footer_nocopy {
-  margin: 0; 
+  margin: 0;
 }
 
 .contact-info {
   background-color: #f9f9f9;
-  padding: 20px; 
-  border-radius: 8px; 
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
-  margin-top: 20px; 
-  display: flex; 
-  flex-direction: column; 
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.contact-info > div, 
+.contact-info > div,
 .contact-info p {
-  display: flex; 
-  align-items: center; 
-  margin-bottom: 10px; 
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
-
 
 .contact-form {
   display: flex;
@@ -194,49 +228,46 @@ body {
 }
 
 .contact-form label {
-  flex: 1; 
+  flex: 1;
 }
 
 .contact-form input,
 .contact-form textarea {
-  padding: 10px; 
-  border: 1px solid #ddd; 
-  border-radius: 4px; 
-  font-size: 14px; 
-  width: 200px; 
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 200px;
 }
 
 .contact-form button {
-  background-color: #000000; 
-  color: #fff; 
-  border: none; 
-  padding: 10px 20px; 
-  border-radius: 4px; 
-  cursor: pointer; 
-  transition: background-color 0.3s ease; 
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .contact-form button:hover {
-  background-color: #58ed41; 
+  background-color: #58ed41;
 }
 
-
 .socials-icons {
-  margin: 15px 0; 
+  margin: 15px 0;
 }
 
 .socials-icons a {
-  text-decoration: none; 
-  color: #000000; 
-  margin-right: 15px; 
-  font-size: 24px; 
+  text-decoration: none;
+  color: #000000;
+  margin-right: 15px;
+  font-size: 24px;
 }
 
 .socials-icons a:hover {
-  color: #de87e2; 
+  color: #de87e2;
 }
-
-
 
 /* --------------------Footer------------------------- */
 .clear {
@@ -317,4 +348,118 @@ body {
   border-top: 1px solid #444;
   padding-top: 10px;
   color: #bbb;
+}
+/* ----------- */
+.product-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.product-image {
+  flex: 1 1 300px;
+}
+.product-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.product-info {
+  flex: 1 1 300px;
+}
+.product-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.product-price {
+  font-size: 20px;
+  color: #e44d26;
+  margin-bottom: 10px;
+}
+.product-description {
+  margin-bottom: 20px;
+}
+.product-quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.product-quantity label {
+  font-weight: bold;
+}
+.product-quantity input {
+  width: 50px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.stock-info {
+  font-style: italic;
+  color: #666;
+}
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.button-primary {
+  background-color: #e44d26;
+  color: white;
+}
+.button-secondary {
+  background-color: #333;
+  color: white;
+}
+.box_buy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+/* Style cho nút "Mua Ngay" */
+.buy-now {
+  display: inline-block;
+  padding: 7px 8px;
+  background-color: #0297ca;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+.buy-now:hover {
+  background-color: #253e4c;
+}
+
+/* Style cho icon giỏ hàng */
+.cart-icon {
+  display: inline-block;
+  margin: 5px;
+  color: #333;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.cart-icon:hover {
+  color: #253e4c;
+  transform: scale(1.1);
 }

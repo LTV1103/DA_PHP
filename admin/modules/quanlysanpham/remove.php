@@ -3,5 +3,5 @@
     $id = $_GET['id'];
     $sql = " DELETE FROM tbl_products WHERE id_product = $id";
     $query = mysqli_query($mysqli,$sql);
-    header('Location:/admin/index.php?action=quanlisanpham');
+    header('Location:../../index.php?action=quanlysanpham&query=load');
 ?>

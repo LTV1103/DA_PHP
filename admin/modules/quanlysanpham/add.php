@@ -10,7 +10,7 @@
 <body>
     <?php 
     $mysqli = new mysqli("localhost", "root", "", "db_webmohinh");
-    $sql_categories = "SELECT * FROM `tbl_categories`";
+    $sql_categories = "SELECT * FROM tbl_categories";
     $query_categories = mysqli_query($mysqli, $sql_categories);
     if(isset($_POST['sbm']))
     {
@@ -28,7 +28,7 @@
         VALUES('$name','$description','$price','$stock','$image','$id_category')";
         $query = mysqli_query($mysqli,$sql);
         move_uploaded_file( $image_tmp, 'image/.'.$image);
-        header('Location:/admin/index.php?action=quanlisanpham');
+        header('Location:../../index.php?action=quanlysanpham&query=load');
         
     }
     ?>

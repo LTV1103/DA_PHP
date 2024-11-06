@@ -1,163 +1,145 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.wrapper{
-    width: 90%;
-    height: auto;
-    margin: 0 auto;
-    background-color: #ffffff;
+.wrapper {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  background-color: #ffffff;
 }
 .nav_bar {
-    background-color: #ce7c7c;
-    padding: 10px 0;
-    text-align: center;
+  background-color: #ce7c7c;
+  padding: 10px 0;
+  text-align: center;
 }
 
 .nav_bar ul {
-    list-style-type: none; 
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav_bar ul li {
-    display: inline-block; 
-    margin: 0 15px;
+  display: inline-block;
+  margin: 0 15px;
 }
 
 .nav_bar ul li a {
-    color: white; 
-    text-decoration: none; 
-    font-weight: bold;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease; 
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .nav_bar ul li a:hover {
-    background-color: #555; 
-    color: #ddd; 
+  background-color: #555;
+  color: #ddd;
 }
 
 /* CSS cho div bao ngoài */
 .main_content {
-    display: flex;
-    height: 200px;
-    align-items: center;
-    margin-top: 50px;
-    justify-content: space-evenly;
+  display: flex;
+  height: 200px;
+  align-items: center;
+  margin-top: 50px;
+  justify-content: space-evenly;
 }
 
-/* CSS cho form_addCate */
-/* Quản lí sản phẩm */
-.form_addCate_item
-{
-    width: 50%;
-    height: 300px;
-    justify-content:left;    
-    
-}
-.form_addCate_item table
-{
-    border-collapse: collapse;
-    width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.form_addCate_item input[type="text"] {
-    width: 100%; /* Chiếm toàn bộ chiều rộng ô */
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.form_addCate_item button {
-    padding: 8px 16px;
-    background-color: #4CAF50; /* Màu nền nút */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.form_addCate_item button:hover {
-    background-color: #45a049; /* Màu nền nút khi hover */
-}
-
-/* Quản lí danh mục */
 .form_addCate {
-    width: 35%;
-   
-    /* Chiều rộng cố định cho form */
+  width: 35%;
 }
-
+.form_addCate_item {
+  position: relative;
+  top: 300px;
+}
 .form_addCate table {
-    border-collapse: collapse; /* Gộp viền bảng */
-    width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+a.btn.btn-success {
+  background-color: #3993a4;
+  border: none;
+}
+a.btn.btn-success:hover {
+background-color: #000000;
+
 }
 
-.form_addCate th, .form_addCate td {
-    padding: 12px;
-    text-align: center;
-    background-color: #f2f2f2; /* Màu nền ô */
+
+.form_addCate th,
+.form_addCate td {
+  padding: 12px;
+  text-align: center;
+  background-color: #f2f2f2;
 }
 
 .form_addCate th {
-    background-color: #000000;
-    color: white; /* Màu chữ tiêu đề */
-    font-weight: bold;
+  background-color: #000000;
+  color: white;
+  font-weight: bold;
 }
 
 .form_addCate input[type="text"] {
-    width: 100%; /* Chiếm toàn bộ chiều rộng ô */
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .form_addCate button {
-    padding: 8px 16px;
-    background-color: #4CAF50; /* Màu nền nút */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .form_addCate button:hover {
-    background-color: #45a049; /* Màu nền nút khi hover */
+  background-color: #45a049;
 }
-
-.list_category{
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    overflow: scroll;
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .list_category {
-    max-height: 100%; /* Chiều cao tối đa của div */
-    overflow-y: auto; /* Thêm thanh cuộn dọc nếu nội dung vượt quá */
-    border: 1px solid #f0f0f0;
-    padding: 10px;
-    box-sizing: border-box;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+}
+.list_category {
+  max-height: 100%;
+  overflow-y: auto;
+  border: 1px solid #f0f0f0;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .list_category table {
-    width: 100%; /* Bảng chiếm toàn bộ chiều rộng div */
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.list_category th, .list_category td {
-    padding: 8px;
-    text-align: left;
-    border: 1px dashed #f0f0f0; /* Kiểu viền gạch */
+.list_category th,
+.list_category td {
+  padding: 8px;
+  text-align: left;
+  border: 1px dashed #f0f0f0;
 }
 .list_category th {
-    position: sticky; /* Giữ tiêu đề cố định khi cuộn */
-    top: 0;
-    background-color: #f9f9f9; /* Màu nền cho tiêu đề để nổi bật */
-    z-index: 1; /* Đảm bảo tiêu đề nằm trên các hàng khác */
+  position: sticky;
+  top: 0;
+  background-color: #f9f9f9;
+  z-index: 1;
 }
+
+/* ----------------- */

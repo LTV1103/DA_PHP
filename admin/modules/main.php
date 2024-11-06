@@ -1,30 +1,23 @@
 <div class="main_content">
     <?php
-    if (isset($_GET['action'])) {
+    if (isset($_GET['action']) && $_GET['query']) {
         $t = $_GET['action'];
+        $query = $_GET['query'];
     } else {
         $t = '';
     }
-    if($t == 'quanlidanhmuc'){
-        include("quanlidanhmuc/add.php");
-        include("quanlidanhmuc/loaddata.php");
+    if ($t == 'quanlydanhmuc' && $query == 'them') {
+        include("modules/quanlydanhmuc/add.php");
+        include("modules/quanlydanhmuc/loaddata.php");
+    } elseif ($t == 'quanlydanhmuc' && $query == 'sua') {
+        include("modules/quanlydanhmuc/edit.php");
+    } elseif ($t == 'quanlysanpham' && $query == 'load') {
+        include("modules/quanlysanpham/loaddata.php");
+    } else {
+        include("modules/dashboard.php");
+    }
 
-    }else if ($t == 'quanlisanpham') {
-        include("quanlisanpham/loaddata.php");
 
-    }
-    else if ($t == 'quanlisanpham/add.php') {
-        include("quanlisanpham/add.php");
-    }
-    else if ($t == 'quanlisanpham/remove.php') {
-        include("quanlisanpham/remove.php");
-    }
-    
-    
-    
-    else{
-        include("dashboard.php");
-    }
 
 
     ?>

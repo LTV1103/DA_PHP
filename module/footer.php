@@ -27,6 +27,6 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2024 Copyright by LTV_BTQ. All rights reserved.</p>
+        <p>&copy; 2024 Copyright by LVT_BTQ. All rights reserved.</p>
     </div>
 </div>
