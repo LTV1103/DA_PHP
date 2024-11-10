@@ -28,6 +28,8 @@ if ($action == "danhmucsanpham") {
     }
 } elseif ($action == "giohang") {
     $title = "Giỏ Hàng";
+} elseif ($action == "thanhtoan") {
+        $title = "Thanh Toan";
 } elseif ($action == "lienhe") {
     $title = "Liên Hệ";
 } else {

@@ -463,3 +463,219 @@ body {
   color: #253e4c;
   transform: scale(1.1);
 }
+
+
+/* Gio Hang */
+.cart-info {
+  display: flex;
+  gap: 20px;
+}
+.cart-details {
+  flex: 2;
+}
+.order-summary {
+  flex: 1;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+}
+.product-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+.product-item img {
+  width: 100px;
+  height: auto;
+}
+.product-item-info {
+  flex: 1;
+}
+.product-quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.product-quantity input {
+  width: 40px;
+  text-align: center;
+}
+.total-price, .total-price-value {
+  font-weight: bold;
+  color: red;
+}
+.checkout {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: red;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 20px;
+}
+.continue-shopping {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+}
+.notes {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+
+
+/* Thanh Toán */
+.billing-info {
+  margin-bottom: 20px;
+}
+
+.billing-info h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Label và input fields */
+.billing-info label {
+  display: block;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.billing-info input,
+.billing-info textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+.billing-info textarea {
+  resize: vertical;
+}
+
+/* Phần tổng kết đơn hàng */
+.order-summary {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.order-summary h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.order-summary p {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Nút xác nhận thanh toán */
+.checkout-button {
+  background-color: #28a745;
+  color: #fff;
+  font-size: 18px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.checkout-button:hover {
+  background-color: #218838;
+}
+
+/* Nút tiếp tục mua hàng */
+.continue-shopping {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #007bff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #007bff;
+}
+
+.continue-shopping:hover {
+  background-color: #f0f8ff;
+  color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Phần hiển thị sản phẩm trong giỏ hàng */
+.product-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.product-item img {
+  max-width: 80px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.product-item-info {
+  flex: 1;
+  padding-left: 15px;
+}
+
+.product-item-info p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.product-quantity {
+  display: flex;
+  align-items: center;
+}
+
+.product-quantity button {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.product-quantity button:hover {
+  background-color: #ddd;
+}
+
+.quantity-input {
+  width: 50px;
+  text-align: center;
+  font-size: 16px;
+  margin: 0 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.total-price {
+  font-size: 18px;
+  color: #28a745;
+  font-weight: bold;
+}
