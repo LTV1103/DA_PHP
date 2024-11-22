@@ -30,6 +30,7 @@ if ($action == "danhmucsanpham") {
     $title = "Giỏ Hàng";
 } elseif ($action == "thanhtoan") {
         $title = "Thanh Toan";
+
 } elseif ($action == "lienhe") {
     $title = "Liên Hệ";
 } else {
@@ -61,9 +62,6 @@ if ($action == "danhmucsanpham") {
         include("./module/main.php");
         include("./module/footer.php");
         ?>
-
-
-
 
     </div>
 

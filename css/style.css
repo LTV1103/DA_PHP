@@ -679,3 +679,74 @@ body {
   color: #28a745;
   font-weight: bold;
 }
+
+/* Nút xóa trong giỏ hàng */
+.btn-xoa {
+  display: inline-block;
+  padding: 8px 16px; 
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff; 
+  background-color: #e74c3c; 
+  border: none; 
+  border-radius: 5px; 
+  text-decoration: none; 
+  transition: all 0.3s ease; 
+}
+
+.btn-xoa:hover {
+  background-color: #c0392b;
+  transform: scale(1.05); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.btn-xoa:active {
+  background-color: #a93226; 
+  transform: scale(0.95); 
+  box-shadow: none; 
+}
+/* thanh toán */
+.billing-info label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.checkout-button {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkout-button:hover {
+  background-color: #218838;
+}
+
+.order-summary {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px 20px;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  margin: 20px 0;
+  text-align: center;
+}

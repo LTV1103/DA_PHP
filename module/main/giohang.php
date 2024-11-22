@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
@@ -49,7 +50,7 @@ foreach ($cart as $item) {
                     </div>
                     <p class="total-price"><?php echo number_format($item['giasp'] * $item['soluong'], 0, ',', '.'); ?> đ</p>
                 </div>
-                <a href="/module/main/capnhatgiohang.php?idxoasp=<?php echo $item['id']; ?>">XÓA</a>
+                <a href="/module/main/capnhatgiohang.php?idxoasp=<?php echo $item['id']; ?>" class="btn-xoa">XÓA</a>
             </div>
             <?php endforeach; ?>
 
@@ -71,3 +72,11 @@ foreach ($cart as $item) {
     <a href="index.php" class="continue-shopping">TIẾP TỤC MUA HÀNG</a>
 
 </div>
+<script src="/javascript/main.js"></script>
+
+<?php
+if (isset($_SESSION['success_message'])) {
+    echo "<div class='success-message'>" . $_SESSION['success_message'] . "</div>";
+    unset($_SESSION['success_message']);
+}
+?>

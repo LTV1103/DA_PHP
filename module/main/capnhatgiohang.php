@@ -73,4 +73,37 @@ if (isset($_GET['idxoasp'])) {
     header("Location: ../../index.php?quanly=giohang");
     exit();
 }
+
+//cập nhật giỏ hàng với js
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'];
+    $quantity = intval($_POST['quantity']);
+
+    foreach ($_SESSION['cart'] as $key => $item) {
+        if ($item['id'] == $id) {
+            $_SESSION['cart'][$key]['soluong'] = $quantity;
+            $itemTotalPrice = $item['giasp'] * $quantity;
+            break;
+        }
+    }
+
+    $totalPrice = 0;
+    foreach ($_SESSION['cart'] as $item) {
+        $totalPrice += $item['giasp'] * $item['soluong'];
+    }
+
+    echo json_encode([
+        'success' => true,
+        'totalPrice' => $totalPrice,
+        'totalPriceFormatted' => number_format($totalPrice, 0, ',', '.') . ' đ',
+        'itemTotalPriceFormatted' => number_format($itemTotalPrice, 0, ',', '.') . ' đ',
+    ]);
+    exit();
+}
+
+
+
 ?>
+
+
+
