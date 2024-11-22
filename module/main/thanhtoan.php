@@ -1,34 +1,30 @@
 <?php
 session_start();
+$totalPrice = 0;
+
+// Kiểm tra giỏ hàng
+if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+    $cart = $_SESSION['cart'];
+    foreach ($cart as $item) {
+        $totalPrice += $item['giasp'] * $item['soluong'];
+    }
+} else {
+    $cart = [];
+}
+
 
 if (isset($_POST['checkout'])) {
     $name = htmlspecialchars($_POST['name']);
     $address = htmlspecialchars($_POST['address']);
     $phone = htmlspecialchars($_POST['phone']);
     $notes = htmlspecialchars($_POST['order-notes']);
-    $cart = $_SESSION['cart'];
-
-    // Tính tổng tiền đơn hàng
-    $totalPrice = 0;
-    if (!empty($cart)) {
-        foreach ($cart as $item) {
-            $totalPrice += $item['giasp'] * $item['soluong'];
-        }
-    }
-    // Lưu đơn hàng
-    $sql_order = "INSERT INTO tbl_order (customer_name, customer_address, customer_phone, notes, total_price, created_at)
-                  VALUES (?, ?, ?, ?, ?, NOW())";
-    $stmt_order = $mysqli->prepare($sql_order);
-    $stmt_order->bind_param("ssssd", $name, $address, $phone, $notes, $totalPrice);
-
-    if ($stmt_order->execute()) {
-        $orderId = $stmt_order->insert_id;
+        // Lưu đơn hàng
+        $sql_order = "INSERT INTO tbl_order (customer_name, customer_address, customer_phone, notes, total_price, created_at)
+                      VALUES ('$name', '$address','$phone', '$notes', '$totalPrice', NOW())";
+        $query_order = mysqli_query($mysqli, $sql_order);
+        $orderId = mysqli_insert_id($mysqli);
 
         // Lưu chi tiết sản phẩm
-        $sql_order_details = "INSERT INTO tbl_order_details (order_id, product_id, product_name, quantity, price, total)
-                              VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt_order_details = $mysqli->prepare($sql_order_details);
-
         foreach ($cart as $item) {
             $productId = $item['id'];
             $productName = $item['tensp'];
@@ -36,18 +32,19 @@ if (isset($_POST['checkout'])) {
             $price = $item['giasp'];
             $total = $quantity * $price;
 
-            $stmt_order_details->bind_param("iisidd", $orderId, $productId, $productName, $quantity, $price, $total);
-            $stmt_order_details->execute();
+            $sql_order_details = "INSERT INTO tbl_order_details (order_id, product_id, product_name, quantity, price, total)
+                                  VALUES ('$orderId', '$productId', '$productName', '$quantity', '$price', '$total')";
+            mysqli_query($mysqli, $sql_order_details);
         }
 
+        // Xóa giỏ hàng
         unset($_SESSION['cart']);
         $_SESSION['success_message'] = "Thanh toán thành công! Đơn hàng của bạn đã được ghi nhận.";
         header("Location: index.php?quanly=giohang");
         exit();
     } else {
-        echo "Lỗi: " . $stmt_order->error;
+        $_SESSION['error_message'] = "Giỏ hàng trống. Không thể thanh toán.";
     }
-}
 ?>
 
 <div class="container">

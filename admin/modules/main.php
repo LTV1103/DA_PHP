@@ -13,7 +13,11 @@
         include("modules/quanlydanhmuc/edit.php");
     } elseif ($t == 'quanlysanpham' && $query == 'load') {
         include("modules/quanlysanpham/loaddata.php");
-    } else {
+    }elseif ($t == 'quanlydonhang' && $query == 'them') {
+        include("modules/quanlydonhang/loaddata.php");
+        include("modules/quanlydonhang/data.php");
+    }
+    else {
         include("modules/dashboard.php");
     }
 
