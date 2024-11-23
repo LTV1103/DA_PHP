@@ -5,21 +5,21 @@ $sql = "SELECT * FROM tbl_order";
 $query = mysqli_query($mysqli, $sql);
 
 // Xử lý xóa đơn hàng
-if (isset($_GET['delete_id'])) {
-    $deleteId = $_GET['delete_id'];
+// if (isset($_GET['delete_id'])) {
+//     $deleteId = $_GET['delete_id'];
 
-    // // Xóa các chi tiết đơn hàng liên quan trước
-    // $sql_delete_details = "DELETE FROM tbl_order_details WHERE order_id = '$deleteId'";
-    // mysqli_query($mysqli, $sql_delete_details);
+//     // // Xóa các chi tiết đơn hàng liên quan trước
+//     // $sql_delete_details = "DELETE FROM tbl_order_details WHERE order_id = '$deleteId'";
+//     // mysqli_query($mysqli, $sql_delete_details);
 
-    // // Xóa đơn hàng
-    // $sql_delete_order = "DELETE FROM tbl_order WHERE id = '$deleteId'";
-    // mysqli_query($mysqli, $sql_delete_order);
+//     // // Xóa đơn hàng
+//     // $sql_delete_order = "DELETE FROM tbl_order WHERE id = '$deleteId'";
+//     // mysqli_query($mysqli, $sql_delete_order);
 
-    // Chuyển hướng về trang quản lý đơn hàng
-    header("Location:admin/index.php?action=quanlydonhang&query=them");
-    exit();
-}
+//     // Chuyển hướng về trang quản lý đơn hàng
+//     header("Location:admin/index.php?action=quanlydonhang&query=them");
+//     exit();
+// }
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -53,7 +53,6 @@ if (isset($_GET['delete_id'])) {
                 <td><?php echo number_format($row['total_price'], 0, ',', '.'); ?> đ</td>
                 <td><?php echo $row['created_at']; ?></td>
                 <td><a href="/admin/modules/quanlydonhang/data.php?id=<?php echo $row['id']; ?>">Xem chi tiết</a></td>
-
             </tr>
             <?php } ?>
         </tbody>

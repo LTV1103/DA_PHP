@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
     $sql_order_details = "SELECT * FROM tbl_order_details WHERE order_id = '$orderId'";
     $query_order_details = mysqli_query($mysqli, $sql_order_details);
 } else {
-    echo "Không có đơn hàng này!";
+    // echo "Không có đơn hàng này!";
     exit;
 }
 ?>

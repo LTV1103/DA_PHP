@@ -750,3 +750,14 @@ input, textarea {
   margin: 20px 0;
   text-align: center;
 }
+
+select#payment-method {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
