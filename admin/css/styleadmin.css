@@ -10,7 +10,7 @@
   background-color: #ffffff;
 }
 .nav_bar {
-  background-color: #ce7c7c;
+  background-color: #000000;
   padding: 10px 0;
   text-align: center;
 }
@@ -40,12 +40,10 @@
   color: #ddd;
 }
 
-/* CSS cho div bao ngoài */
 .main_content {
   display: flex;
-  height: 200px;
+  min-height: 200px;
   align-items: center;
-  margin-top: 50px;
   justify-content: space-evenly;
 }
 
@@ -54,7 +52,6 @@
 }
 .form_addCate_item {
   position: relative;
-  top: 300px;
 }
 .form_addCate table {
   border-collapse: collapse;
@@ -66,10 +63,8 @@ a.btn.btn-success {
   border: none;
 }
 a.btn.btn-success:hover {
-background-color: #000000;
-
+  background-color: #000000;
 }
-
 
 .form_addCate th,
 .form_addCate td {
@@ -94,7 +89,7 @@ background-color: #000000;
 
 .form_addCate button {
   padding: 8px 16px;
-  background-color: #4caf50;
+  background-color: #e91e63;
   color: white;
   border: none;
   border-radius: 4px;
@@ -103,7 +98,7 @@ background-color: #000000;
 }
 
 .form_addCate button:hover {
-  background-color: #45a049;
+  background-color: #4b9abf;
 }
 .card-header {
   display: flex;
@@ -117,7 +112,7 @@ background-color: #000000;
   overflow: scroll;
 }
 .list_category {
-  max-height: 100%;
+  min-height: 250px;
   overflow-y: auto;
   border: 1px solid #f0f0f0;
   padding: 10px;
@@ -138,8 +133,327 @@ background-color: #000000;
 .list_category th {
   position: sticky;
   top: 0;
-  background-color: #f9f9f9;
+  background-color: #000000;
   z-index: 1;
 }
-
+.list_category tr td a:hover {
+  color: #e91e63;
+  transition: inherit;
+}
 /* ----------------- */
+h2 {
+  color: #333;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+table th {
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+}
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+/* Header của card */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.card-header .btn {
+  font-size: 1rem;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.card-header .btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.card-header .btn-success:hover {
+  background-color: #218838;
+}
+
+/* Table styling */
+.table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table thead {
+  background-color: #343a40;
+  color: white;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.table th {
+  font-weight: bold;
+  text-align: center;
+}
+
+.table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* Hình ảnh trong bảng */
+.table td img {
+  border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Nút thao tác */
+.table .btn {
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+}
+
+.table .btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+.table .btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.table .btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.table .btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Responsive bảng */
+@media (max-width: 768px) {
+  .table thead {
+    display: none;
+  }
+
+  .table tr {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    flex: 1;
+    text-align: left;
+  }
+
+  .table img {
+    max-width: 80px;
+  }
+}
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Header của card */
+.card-header {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 15px;
+  font-weight: bold;
+}
+
+/* Phần body của card */
+.card-body {
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+/* Form nhóm */
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+/* Input & select styling */
+.form-control,
+.form-control-file,
+select {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+/* Khoảng cách giữa các nhóm */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Nút Thêm Sản Phẩm */
+button.btn-success {
+  background-color: #3e9eda;
+  color: white;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button.btn-success:hover {
+  background-color: #000000;
+}
+
+/* Card căn giữa với khoảng cách từ phía trên */
+.mt-5 {
+  margin-top: 5rem !important;
+}
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Responsive chỉnh kích thước card */
+@media (max-width: 768px) {
+  .card {
+    width: 90% !important;
+  }
+}
+
+/* edit */
+/* Tổng thể form (kế thừa từ form thêm sản phẩm) */
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.card-header>h1 {color: #000000;}
+.card-header {
+  background-color: #ffffff; /* Màu xanh khác để phân biệt */
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+/* Form nhóm */
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.form-control,
+.form-control-file,
+select {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+/* Nút cập nhật */
+button.btn-success {
+  background-color: #17a2b8; /* Cùng màu với header */
+  color: white;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button.btn-success:hover {
+  background-color: #138496;
+}
+
+/* Hình ảnh hiện tại */
+.form-group img {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  max-width: 100%;
+}
+
+/* Notifications */
+
+.hidden {
+  display: none;
+}
+#notification {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  color: #ffffff;
+  font-size: 20px;
+  border-radius: 5px;
+  padding: 20px 30px;
+  background: #111b1c88;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transform: translateX(-10%);
+  z-index: 1000;
+}

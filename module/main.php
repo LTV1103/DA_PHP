@@ -13,6 +13,8 @@
             include("main/sanpham.php");
         } elseif ($t == 'giohang') {
             include("main/giohang.php");
+        } elseif ($t == 'thanhtoan') {
+            include("main/thanhtoan.php");
         } elseif ($t == 'lienhe') {
             include("main/lienhe.php");
         } elseif ($t == 'sanpham') {

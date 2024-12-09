@@ -1,21 +1,34 @@
 <?php
-session_start();
 include('config/config.php');
 
 if (isset($_POST['btnLogin'])) {
     $username = $_POST['user_name'];
-    $password = md5($_POST['password']);
-    $sql = "SELECT * FROM tbl_users WHERE email = '" . $username . "' AND password = '" . $password . "' AND role = '" . 'admin' . "' ";
-    $row = mysqli_query($mysqli, $sql);
-    $count = mysqli_num_rows($row);
-    if ($count > 0) {
-        $_SESSION['login'] = $username;
-        header('Location:index.php');
-    } else {
-        header('Location:login.php');
+    $password = $_POST['password'];
+    try {
+        $sql = "SELECT * FROM tbl_users WHERE email = :username AND password = :password AND role = :role";
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+        $stmt->bindParam(':role', $role, PDO::PARAM_STR);
+
+        $role = 'admin';
+
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $_SESSION['login'] = $username;
+            header('Location:index.php');
+        } else {
+            header('Location:login.php');
+        }
+    } catch (PDOException $e) {
+        echo "Lỗi ";
     }
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

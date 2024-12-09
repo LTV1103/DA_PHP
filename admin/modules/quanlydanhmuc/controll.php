@@ -3,35 +3,56 @@ include("../../config/config.php");
 
 if (isset($_POST['btnAdd'])) {
     $tenDanhmuc = $_POST['tenDanhmuc'];
-  
     if (!empty($tenDanhmuc)) {
-        $sql_add = "INSERT INTO tbl_categories(name) VALUE('" . $tenDanhmuc . "')";
-        if (mysqli_query($mysqli, $sql_add)) {
-            header('Location:../../index.php?action=quanlydanhmuc&query=them');
-            exit();
-        } else {
-            echo "Lỗi: Không thể thêm vào cơ sở dữ liệu!";
+        try {
+            $sql_add = "INSERT INTO tbl_categories (name) VALUES (:name)";
+            $stmt = $pdo->prepare($sql_add);
+            $stmt->bindParam(':name', $tenDanhmuc, PDO::PARAM_STR);
+            if ($stmt->execute()) {
+                header('Location:../../index.php?action=quanlydanhmuc&query=them&message=success');
+                exit();
+            } else {
+                header('Location:../../index.php?action=quanlydanhmuc&query=them&message=error');
+            }
+        } catch (PDOException $e) {
+            header('Location:../../index.php?action=quanlydanhmuc&query=them&message=error');
         }
     } else {
-        echo "Vui lòng nhập tên danh mục!";
+        header('Location:../../index.php?action=quanlydanhmuc&query=them&message=empty');
     }
 } elseif (isset($_POST['btnEdit'])) {
-    $tenDanhmuc= $_POST['suaDanhmuc'];
+    $tenDanhmuc = $_POST['suaDanhmuc'];
     if (!empty($tenDanhmuc)) {
-        $sql_update = "UPDATE tbl_categories SET name='".$tenDanhmuc."'  WHERE id_category='$_GET[idDanhmuc]'" ;
-        if (mysqli_query($mysqli, $sql_update)) {
-            header('Location:../../index.php?action=quanlydanhmuc&query=them');
-            exit();
-        } else {
-            echo "Lỗi: Không thể thêm vào cơ sở dữ liệu!";
+        try {
+            $sql_update = "UPDATE tbl_categories SET name = :name WHERE id_category = :id";
+            $stmt = $pdo->prepare($sql_update);
+            $stmt->bindParam(':name', $tenDanhmuc, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $_GET['idDanhmuc'], PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                header('Location:../../index.php?action=quanlydanhmuc&query=them&message=update');
+                exit();
+            } else {
+                header('Location:../../index.php?action=quanlydanhmuc&query=them&message=error');
+            }
+        } catch (PDOException $e) {
+            header('Location:../../index.php?action=quanlydanhmuc&query=them&message=error');
         }
     } else {
-        echo "Vui lòng nhập tên danh mục!";
+        header('Location:../../index.php?action=quanlydanhmuc&query=them&message=empty');
     }
-
 } else {
     $id = $_GET['idDanhmuc'];
-    $sql_delete = "DELETE FROM tbl_categories WHERE id_category = '" . $id . "'";
-    mysqli_query($mysqli, $sql_delete);
-    header('Location:../../index.php?action=quanlydanhmuc&query=them');
+    try {
+        $sql_delete = "DELETE FROM tbl_categories WHERE id_category = :id";
+        $stmt = $pdo->prepare($sql_delete);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            header('Location:../../index.php?action=quanlydanhmuc&query=them&message=delSuccess');
+            exit();
+        } else {
+            header('Location:../../index.php?action=quanlydanhmuc&query=them&message=error');
+        }
+    } catch (PDOException $e) {
+        header('Location:../../index.php?action=quanlydanhmuc&query=them&message=error');
+    }
 }

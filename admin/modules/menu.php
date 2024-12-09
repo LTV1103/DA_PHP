@@ -6,7 +6,7 @@ if (isset($_GET['status']) == 'logout') {
 ?>
 
 <div>
-    <h1 style="color: blue; text-align: center;">Admin</h1>
+    <h1 style="color: #00b3f0; text-align: center; font-size: 50px;">Admin</h1>
 </div>
 
 <div class="nav_bar">
@@ -14,9 +14,12 @@ if (isset($_GET['status']) == 'logout') {
         <li><a href="index.php?action=quanlydanhmuc&query=them">Quản lí danh mục</a></li>
         <li><a href="index.php?action=quanlysanpham&query=load">Quản lí sản phẩm</a></li>
         <li><a href="index.php?action=quanlydonhang&query=them">Quản lí đơn hàng</a></li>
+        <li><a href="index.php?action=quanlythanhtoan&query=them">Quản lí Thanh toán</a></li>
+
         <li><a href="index.php?status=logout">Đăng Xuất | <?php if (isset($_SESSION['login'])) {
                                                                 echo $_SESSION['login'];
                                                             } ?></a></li>
+        <li><a href="../index.php">User</a></li>
 
     </ul>
 </div>

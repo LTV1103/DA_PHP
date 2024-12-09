@@ -1,43 +1,42 @@
 <?php
 $id = isset($_GET['idDanhmuc']) ? (int)$_GET['idDanhmuc'] : 0;
 
-$sql_product = "SELECT * FROM tbl_products, tbl_categories WHERE tbl_products.id_category = tbl_categories.id_category AND tbl_categories.id_category = $id ";
-$query_product = mysqli_query($mysqli, $sql_product);
-
-$sql = "SELECT * FROM tbl_products";
-$query = mysqli_query($mysqli, $sql);
+try {
+ 
+    if ($id > 0) {
+        $sql_product = "SELECT * FROM tbl_products, tbl_categories 
+                        WHERE tbl_products.id_category = tbl_categories.id_category 
+                        AND tbl_categories.id_category = :idDanhmuc";
+        $stmt_product = $pdo->prepare($sql_product);
+        $stmt_product->bindParam(':idDanhmuc', $id, PDO::PARAM_INT);
+        $stmt_product->execute();
+        $products_by_category = $stmt_product->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+     
+        $sql = "SELECT * FROM tbl_products";
+        $stmt_all = $pdo->prepare($sql);
+        $stmt_all->execute();
+        $all_products = $stmt_all->fetchAll(PDO::FETCH_ASSOC);
+    }
+} catch (PDOException $e) {
+    echo "Lỗi";
+}
 ?>
 
 <h3>SẢN PHẨM</h3>
-<!-- Hiện Tất cả Sản Phẩm -->
-<?php if ($id == 0) { ?>
-    <ul class="product_list">
-        <?php while ($row = mysqli_fetch_array($query)) { ?>
-            <li>
-                <a href="index.php?quanly=sanpham&id=<?php echo  $row['id_product'] ?>">
-                    <img src="./image/<?php echo htmlspecialchars($row['image']); ?>" width="200px" alt="Product Image">
-                    <p class="title_product"><?php echo htmlspecialchars($row['namepro']); ?></p>
-                    <p class="price_product"><?php echo number_format($row['price'], 0, ',', '.'); ?>₫</p>
-                    <div class="box_buy">
-                        <button class="buy-now">Mua Ngay</button>
-                        <a href="#" class="cart-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </div>
 
-                </a>
-            </li>
-        <?php } ?>
-    </ul>
-    <!-- Hiện Sản Phẩm Theo Danh Mục -->
-<?php } else { ?>
-    <ul class="product_list">
-        <?php while ($row_product = mysqli_fetch_array($query_product)) { ?>
-            <li>
-                <a href="index.php?quanly=sanpham&id=<?php echo  $row_product['id_product'] ?>">
-                    <img src="./image/<?php echo htmlspecialchars($row_product['image']); ?>" width="200px" alt="Product Image">
-                    <p class="title_product"><?php echo htmlspecialchars($row_product['namepro']); ?></p>
-                    <p class="price_product"><?php echo number_format($row_product['price'], 0, ',', '.'); ?>₫</p>
+<?php if ($id == 0) { ?>
+    <div class="product_list">
+        <?php foreach ($all_products as $row) { ?>
+            <div class="product_item">
+                <a href="index.php?quanly=sanpham&id=<?php echo $row['id_product']; ?>">
+                    <div class="product_image">
+                        <img src="./image/<?php echo htmlspecialchars($row['image'], ENT_QUOTES, 'UTF-8'); ?>" alt="Product Image">
+                    </div>
+                    <div class="product_info">
+                        <p class="title_product"><?php echo htmlspecialchars($row['namepro'], ENT_QUOTES, 'UTF-8'); ?></p>
+                        <p class="price_product"><?php echo number_format($row['price'], 0, ',', '.'); ?>₫</p>
+                    </div>
                     <div class="box_buy">
                         <button class="buy-now">Mua Ngay</button>
                         <a href="#" class="cart-icon">
@@ -45,7 +44,29 @@ $query = mysqli_query($mysqli, $sql);
                         </a>
                     </div>
                 </a>
-            </li>
+            </div>
         <?php } ?>
-    </ul>
+    </div>
+<?php } else { ?>
+    <div class="product_list">
+        <?php foreach ($products_by_category as $row_product) { ?>
+            <div class="product_item">
+                <a href="index.php?quanly=sanpham&id=<?php echo $row_product['id_product']; ?>">
+                    <div class="product_image">
+                        <img src="./image/<?php echo htmlspecialchars($row_product['image'], ENT_QUOTES, 'UTF-8'); ?>" alt="Product Image">
+                    </div>
+                    <div class="product_info">
+                        <p class="title_product"><?php echo htmlspecialchars($row_product['namepro'], ENT_QUOTES, 'UTF-8'); ?></p>
+                        <p class="price_product"><?php echo number_format($row_product['price'], 0, ',', '.'); ?>₫</p>
+                    </div>
+                    <div class="box_buy">
+                        <button class="buy-now">Mua Ngay</button>
+                        <a href="#" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </div>
+                </a>
+            </div>
+        <?php } ?>
+    </div>
 <?php } ?>

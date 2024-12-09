@@ -1,19 +1,23 @@
 <?php
-include("./admin/config/config.php");
-
+require_once(dirname(__FILE__) . "/admin/config/config.php");
 
 if (isset($_GET['idDanhmuc'])) {
     $idDanhmuc = $_GET['idDanhmuc'];
-    $sql = "SELECT * FROM tbl_categories WHERE id_category = $idDanhmuc";
-    $query = mysqli_query($mysqli, $sql);
 
-    if ($query && mysqli_num_rows($query) > 0) {
-        $row = mysqli_fetch_assoc($query);
-        $categoryName = $row['name'];
-        $title = $categoryName;
+    try {
+        $sql = "SELECT * FROM tbl_categories WHERE id_category = :idDanhmuc";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':idDanhmuc', $idDanhmuc, PDO::PARAM_INT);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $categoryName = $row['name'];
+            $title = $categoryName;
+        }
+    } catch (PDOException $e) {
     }
 }
-
 if (isset($_GET['quanly'])) {
     $action = $_GET['quanly'];
 } else {
@@ -44,28 +48,35 @@ if ($action == "danhmucsanpham") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" type="image/png" href="/image/logo1.png">
 
 
     <title><?php echo $title ?></title>
 </head>
 
 <body>
+
+
+
     <div class="wrapper">
+        <div class="hidden" id="notification"></div>
 
         <?php
-        include("./admin/config/config.php");
-
         include("./module/menu.php");
+        if ($action == "") {
+            include("./module/slider.php");
+
+        }
         include("./module/main.php");
         include("./module/footer.php");
         ?>
 
-
-
-
     </div>
-
-
 </body>
+
+<script src="/javascript/ui.js">
+</script>
+<script src="/javascript/notification.js">
+</script>
 
 </html>
