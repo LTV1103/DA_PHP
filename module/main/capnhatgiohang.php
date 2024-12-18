@@ -9,7 +9,6 @@ if (isset($_POST['themgiohang'])) {
     $id = $_GET['idsp'];
     $quantity = 1;
 
-    // Fetch product from the database using prepared statement
     $sql = "SELECT * FROM tbl_products WHERE id_product = :id LIMIT 1";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['id' => $id]);

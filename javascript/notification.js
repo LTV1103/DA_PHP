@@ -21,9 +21,13 @@ if (urlParams.has("error")) {
       alert("Đã xảy ra lỗi");
       break;
   }
-  setTimeout(function() {
+  setTimeout(function () {
     urlParams.delete("error");
-    window.history.pushState({}, '', window.location.pathname + urlParams.toString());
+    window.history.pushState(
+      {},
+      "",
+      window.location.pathname + urlParams.toString()
+    );
   }, 1000); // 1000ms = 1 giây
 }
 
@@ -33,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (message) {
     const noti = document.getElementById("notification");
-    const messages = {  
+    const messages = {
       success: "Thêm thành công",
       delSuccess: "Xóa thành công",
       update: "Sửa thành công",
@@ -47,10 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       noti.classList.add("hidden");
-      const newUrl =
-        window.location.pathname +
-        (action ? `?action=${action}&query=${query || ""}` : "");
-      window.history.replaceState({}, "", newUrl);
+      // const newUrl =
+      //   window.location.pathname +
+      //   (action ? `?action=${action}&query=${query || ""}` : "");
+      // window.history.replaceState({}, "", newUrl);
     }, 2000);
   }
 });

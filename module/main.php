@@ -3,6 +3,8 @@
     include("sidebar/sidebar.php");
     ?>
     <div class="main_content">
+
+
         <?php
         if (isset($_GET['quanly'])) {
             $t = $_GET['quanly'];
@@ -10,6 +12,7 @@
             $t = '';
         }
         if ($t == 'danhmucsanpham') {
+            include("main/xlytiemkiem.php");
             include("main/sanpham.php");
         } elseif ($t == 'giohang') {
             include("main/giohang.php");
@@ -20,6 +23,7 @@
         } elseif ($t == 'sanpham') {
             include("main/chitietsp.php");
         } else {
+            include("main/xlytiemkiem.php");
             include("main/index_mainContent.php");
         }
         ?>

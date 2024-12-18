@@ -5,27 +5,36 @@ if (isset($_POST['btnLogin'])) {
     $username = $_POST['user_name'];
     $password = $_POST['password'];
     try {
-        $sql = "SELECT * FROM tbl_users WHERE email = :username AND password = :password AND role = :role";
+        $sql = "SELECT * FROM tbl_users WHERE email = :username AND role = :role";
         $stmt = $pdo->prepare($sql);
 
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
         $stmt->bindParam(':role', $role, PDO::PARAM_STR);
 
         $role = 'admin';
 
         $stmt->execute();
 
+        // Kiểm tra nếu người dùng tồn tại
         if ($stmt->rowCount() > 0) {
-            $_SESSION['login'] = $username;
-            header('Location:index.php');
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (password_verify($password, $user['password'])) {
+                $_SESSION['login'] = $username;
+                header('Location:index.php');
+                exit();
+            } else {
+                header('Location:login.php?error=invalid_password');
+                exit();
+            }
         } else {
-            header('Location:login.php');
+            header('Location:login.php?error=userNotFound');
+            exit();
         }
     } catch (PDOException $e) {
-        echo "Lỗi ";
+        header('Location: ?error=dbError');
     }
 }
+
 
 ?>
 

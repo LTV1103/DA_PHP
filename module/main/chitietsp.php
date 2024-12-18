@@ -8,7 +8,8 @@ try {
     $stmt->execute();
     $product = $stmt->fetch(PDO::FETCH_ASSOC); 
 } catch (PDOException $e) {
-    echo "Lỗi: " . $e->getMessage();
+    echo "Lỗi";
+
     exit();
 }
 ?>

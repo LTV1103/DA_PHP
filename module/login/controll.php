@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = $_POST['password'];
 
         try {
-            // Tìm người dùng dựa trên email
             $sql = "SELECT * FROM tbl_users WHERE email = :email AND role = :role";
             $stmt = $pdo->prepare($sql);
 
@@ -44,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header('Location:login.php?error=dbError');
         }
     } else {
-        // Xử lý đăng ký ở đây (để nguyên như code cũ)
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['password'];

@@ -56,26 +56,20 @@ if ($action == "danhmucsanpham") {
 
 <body>
 
-
-
     <div class="wrapper">
         <div class="hidden" id="notification"></div>
-
         <?php
         include("./module/menu.php");
         if ($action == "") {
             include("./module/slider.php");
-
         }
         include("./module/main.php");
         include("./module/footer.php");
         ?>
-
     </div>
 </body>
 
-<script src="/javascript/ui.js">
-</script>
+
 <script src="/javascript/notification.js">
 </script>
 

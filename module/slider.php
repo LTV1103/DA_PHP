@@ -14,3 +14,5 @@
         <button aria-label="Go to slide 3"></button>
     </div>
 </section>
+<script src="/javascript/ui.js">
+</script>

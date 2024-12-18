@@ -19,12 +19,12 @@
 
             <div class="input-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required autocomplete="off">
             </div>
 
             <div class="input-group">
                 <label for="password">Mật khẩu:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" required autocomplete="new-password">
             </div>
 
             <div class="button-group">

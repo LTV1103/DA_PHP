@@ -6,7 +6,7 @@ try {
     $stmt->execute();
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    echo "Lỗi: " . $e->getMessage();
+    echo "Lỗi";
     exit();
 }
 ?>

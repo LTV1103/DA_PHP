@@ -3,7 +3,10 @@ require_once dirname(dirname(__DIR__)) . "/config/config.php";
 
 try {
     // Truy vấn cơ sở dữ liệu
-    $sql = "SELECT tbl_users.email ,tbl_order.id,tbl_order.customer_name,tbl_order.customer_address,tbl_order.customer_phone,tbl_order.notes,tbl_order.total_price,tbl_order.total_price,tbl_order.created_at 
+    $sql = "SELECT tbl_users.email ,tbl_order.id,
+                    tbl_order.customer_name,tbl_order.customer_address,
+                    tbl_order.customer_phone,tbl_order.notes,tbl_order.total_price,
+                    tbl_order.total_price,tbl_order.created_at 
     FROM tbl_users JOIN tbl_order ON tbl_users.id_user = tbl_order.id_user ";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
@@ -27,8 +30,8 @@ try {
         <table>
             <thead>
                 <tr>  
-                    <th>ID</th>  
-                    <th>Tài Khoản Khách Hàng</th>
+                    <th>Mã đơn</th>  
+                    <th>Email</th>
                     <th>Tên khách hàng</th>
                     <th>Địa chỉ</th>
                     <th>Số điện thoại</th>
